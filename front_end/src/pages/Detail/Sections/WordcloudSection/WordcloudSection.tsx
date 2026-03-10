@@ -1,7 +1,7 @@
 import { memo, useMemo } from "react";
 import WordCloud from "react-d3-cloud";
 import { mockData } from "@/data/mock";
-import styles from "@/pages/Detail/sections/WordcloudSection/WordcloudSection.module.scss";
+import styles from "@/pages/Detail/Sections/WordcloudSection/WordcloudSection.module.scss";
 import type { 
   WordCloudItem, 
   WordCloudSectionProps, 

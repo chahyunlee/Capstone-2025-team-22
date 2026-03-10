@@ -1,4 +1,4 @@
-import type { AnalyzedText, WordCloudDatum } from '../types';
+import type { AnalyzedText, WordCloudDatum, AnalysisResult, RecentResult } from '@/types';
 
 export const mockData: AnalyzedText = {
   saveAt: "2025-08-05",
@@ -32,6 +32,61 @@ export const mockData: AnalyzedText = {
   adverb: [],
   key_word: ["인터넷주소", "정보보호", "디지털"],
 };
+
+// ✅ API Mock 데이터
+export const mockAnalysisResult: AnalysisResult = {
+  text: "인터넷주소관리기관은 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제52조를 근거로 하여 설립된 기관으로, 우리나라 인터넷주소 체계의 안정적 운영과 효율적 관리를 위해 중요한 역할을 맡고 있다.",
+  nouns: ["인터넷", "주소", "관리", "기관", "한국", "진흥원", "할당", "등록", "업무", "수행", "정보", "통신", "망", "이용", "촉진", "보호", "법률", "제52조", "운영", "사무소"],
+  verbs: ["수행", "말한다", "받"],
+  adjectives: ["안정적", "효율적", "중요한"],
+  keywords: ["인터넷주소", "정보보호", "디지털"],
+  noun_count: 20,
+  verb_count: 3,
+  adjective_count: 3,
+  attention_result: {
+    "준공승인": {
+      nouns: {
+        "행동_341_343": { keyword: "행동", score: 0.8911607265472412, start: 341, end: 343 },
+        "미비_286_288": { keyword: "미비", score: 1.1392326354980469, start: 286, end: 288 },
+        "사항_283_285": { keyword: "사항", score: 0.7490525841712952, start: 283, end: 285 },
+      },
+      verbs: {
+        "이루어진다는_299_305": { keyword: "이루어진다는", score: 0.5714138150215149, start: 299, end: 305 },
+        "되나요_83_86": { keyword: "되나요", score: 0.33938765525817877, start: 83, end: 86 },
+      }
+    }
+  }
+};
+
+export const mockRecentResults: RecentResult[] = [
+  {
+    id: 1,
+    text: "인터넷주소관리기관은 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제52조를 근거로 하여 설립된 기관입니다.",
+    created_at: "2025-08-05T10:30:00Z",
+    nouns: ["인터넷", "주소", "관리", "기관", "정보통신망", "이용촉진", "정보보호", "법률"],
+    verbs: ["설립"],
+    adjectives: [],
+    keywords: ["인터넷주소", "정보보호", "법률"],
+  },
+  {
+    id: 2,
+    text: "인공지능 기술의 발전은 현대 사회에 큰 영향을 미치고 있습니다.",
+    created_at: "2025-08-04T15:20:00Z",
+    nouns: ["인공지능", "기술", "발전", "현대", "사회", "영향"],
+    verbs: ["미치다"],
+    adjectives: ["큰"],
+    keywords: ["인공지능", "기술", "발전"],
+  },
+  {
+    id: 3,
+    text: "친환경 에너지는 지속 가능한 미래를 위한 핵심 요소입니다.",
+    created_at: "2025-08-03T09:15:00Z",
+    nouns: ["친환경", "에너지", "미래", "요소"],
+    verbs: [],
+    adjectives: ["지속가능한", "핵심"],
+    keywords: ["친환경", "에너지", "지속가능"],
+  },
+];
 
 export const mockDataNoKeywords: AnalyzedText = {
   saveAt: "2025-08-04",

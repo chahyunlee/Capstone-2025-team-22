@@ -5,9 +5,9 @@ import WordCloudPage from "@/pages/Detail/Sections/WordcloudSection/WordcloudSec
 import FloatingSearch from "@/components/FloatingSearch/FloatingSearch";
 import Drawer from "@/components/Drawer/Drawer";
 import KeywordAnalysisSection from "@/pages/Detail/Sections/KeywordAnalysisSection/KeywordAnalysisSection";
-import type { AnalysisResult, RecentResult } from "@/types";
-import { getRecentResults } from "@/api/services/results";
+import type { AnalysisResult } from "@/types";
 import { getAnalysisResult, extractKeywords } from "@/api/services/analysis";
+import { useRecentResults } from "@/hooks/useRecentResults";
 
 const convertKeywordToString = (keyword: any): string => {
   if (typeof keyword === "string") return keyword;
@@ -20,28 +20,19 @@ const convertKeywordToString = (keyword: any): string => {
 export const DetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const location = useLocation();
-
-  const [analysisData, setAnalysisData] = useState<AnalysisResult | null>(null);
-  const [recentResults, setRecentResults] = useState<RecentResult[]>([]);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedKeyword, setSelectedKeyword] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  const [analysisData, setAnalysisData] = useState<AnalysisResult | null>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedKeyword, setSelectedKeyword] = useState<string | null>(null);
   const [clickedWordScore, setClickedWordScore] = useState<{
     score: number;
     type: "noun" | "verb";
   } | null>(null);
 
-  useEffect(() => {
-    const fetchRecentResults = async () => {
-      try {
-        const results = await getRecentResults();
-        setRecentResults(results);
-      } catch (error) {
-        console.error("최근 검색 기록을 불러오는 중 오류 발생:", error);
-      }
-    };
+  const { recentResults } = useRecentResults();
 
+  useEffect(() => {
     const fetchAnalysisResultById = async (analysisId: string) => {
       try {
         const data = await getAnalysisResult(analysisId);
@@ -87,13 +78,11 @@ export const DetailPage = () => {
       } catch (error) {
         console.error(
           `ID ${analysisId}에 대한 분석 결과를 불러오는 중 오류 발생:`,
-          error
+          error,
         );
         setAnalysisData(null);
       }
     };
-
-    fetchRecentResults();
 
     if (location.state && location.state.analysisResult) {
       setAnalysisData(location.state.analysisResult);

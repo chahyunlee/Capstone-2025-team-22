@@ -35,9 +35,9 @@ export const mockData: AnalyzedText = {
 
 export const mockAnalysisResult: AnalysisResult = {
   text: "인공지능 기술은 현대 사회의 다양한 분야에서 혁신을 이끌고 있습니다.",
-  nouns: ["인공지능", "기술", "사회", "분야", "혁신"],
+  nouns: ["인공지능", "기술", "사회", "분야", "혁신", "현대"],
   verbs: ["이끌고"],
-  adjectives: ["현대", "다양한"],
+  adjectives: ["다양한"],
   keywords: ["인공지능", "혁신"],
   noun_count: 5,
   verb_count: 1,
@@ -72,8 +72,8 @@ export const mockAnalysisResult: AnalysisResult = {
         혁신_24_26: {
           keyword: "혁신",
           score: 0.9,
-          start: 24,
-          end: 26,
+          start: 25,
+          end: 27,
         },
       },
       verbs: {},
@@ -88,99 +88,6 @@ export const mockDataNoKeywords: AnalyzedText = {
   verb: [],
   adverb: [],
   key_word: [],
-};
-
-export const mockDataAnalysis = {
-  준공승인: {
-    nouns: {
-      행동_341_343: {
-        keyword: "행동",
-        score: 0.8911607265472412,
-        start: 341,
-        end: 343,
-      },
-      미비_286_288: {
-        keyword: "미비",
-        score: 1.1392326354980469,
-        start: 286,
-        end: 288,
-      },
-      사항_283_285: {
-        keyword: "사항",
-        score: 0.7490525841712952,
-        start: 283,
-        end: 285,
-      },
-      예정자_326_329: {
-        keyword: "예정자",
-        score: 1.0591341257095337,
-        start: 326,
-        end: 329,
-      },
-      일괄_48_50: {
-        keyword: "일괄",
-        score: 0.7451565256555518,
-        start: 48,
-        end: 50,
-      },
-      제기_334_336: {
-        keyword: "제기",
-        score: 0.7274777293205261,
-        start: 334,
-        end: 336,
-      },
-      조건부_306_309: {
-        keyword: "조건부",
-        score: 0.9270519614219666,
-        start: 306,
-        end: 309,
-      },
-      접수_61_63: {
-        keyword: "접수",
-        score: 0.7340967655181885,
-        start: 61,
-        end: 63,
-      },
-      행동_341_343_2: {
-        keyword: "행동",
-        score: 0.8911607265472412,
-        start: 341,
-        end: 343,
-      },
-    },
-    verbs: {
-      이루어진다는_299_305: {
-        keyword: "이루어진다는",
-        score: 0.5714138150215149,
-        start: 299,
-        end: 305,
-      },
-      되나요_83_86: {
-        keyword: "되나요",
-        score: 0.33938765525817877,
-        start: 83,
-        end: 86,
-      },
-      이루어진다는_299_305_2: {
-        keyword: "이루어진다는",
-        score: 0.5714138150215149,
-        start: 299,
-        end: 305,
-      },
-      있나요_184_187: {
-        keyword: "있나요",
-        score: 0.23979261517524772,
-        start: 184,
-        end: 187,
-      },
-      하셔도먼서_55_60: {
-        keyword: "하셔도먼서",
-        score: 0.27612936496734627,
-        start: 55,
-        end: 60,
-      },
-    },
-  },
 };
 
 // ✅ react-d3-cloud용 변환 유틸

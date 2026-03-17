@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import type { DrawerProps } from "@/types";
 import styles from "./Drawer.module.scss";
+import { formatDateAndTime } from "@/utils/date";
 
 export default function Drawer({
   isOpen,
@@ -39,7 +40,7 @@ export default function Drawer({
                 : ""}
             </div>
             <div className={styles.drawerDate}>
-              {result ? result.created_at : ""}
+              {result ? formatDateAndTime(result.created_at) : ""}
             </div>
           </div>
         ))}

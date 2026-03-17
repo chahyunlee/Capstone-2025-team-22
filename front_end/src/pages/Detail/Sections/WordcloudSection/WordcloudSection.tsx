@@ -2,10 +2,10 @@ import { memo, useMemo } from "react";
 import WordCloud from "react-d3-cloud";
 import { mockData } from "@/data/mock";
 import styles from "@/pages/Detail/Sections/WordcloudSection/WordcloudSection.module.scss";
-import type { 
-  WordCloudItem, 
-  WordCloudSectionProps, 
-  WordCloudPageProps 
+import type {
+  WordCloudItem,
+  WordCloudSectionProps,
+  WordCloudPageProps,
 } from "@/types/wordcloud";
 
 const colors = ["#3EC1D3", "#23C8EF", "#FF165D", "#F472B6"];
@@ -15,8 +15,8 @@ const WordCloudSection = ({ words, title }: WordCloudSectionProps) => {
     const partOfSpeech = title.includes("명사")
       ? "명사"
       : title.includes("동사")
-      ? "동사"
-      : "형용사";
+        ? "동사"
+        : "형용사";
     return (
       <div className={styles.wordCloudSection}>
         <h3 className={styles.title}>{title}</h3>
@@ -41,7 +41,7 @@ const WordCloudSection = ({ words, title }: WordCloudSectionProps) => {
       <div className={styles.cloudContainer}>
         <WordCloud
           data={formattedWords}
-          fontSize={(w: WordCloudItem) => Math.log2(w.value) * 16}
+          fontSize={(w) => Math.log2(w.value) * 16}
           font="Pretendard"
           fill={(w: WordCloudItem) => w.color}
           rotate={() => 0}

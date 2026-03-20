@@ -29,9 +29,6 @@ cp .env.example .env
 ```env
 # API 설정
 VITE_API_BASE_URL=http://localhost:8000
-
-# Mock 모드 설정 (true: Mock 데이터 사용, false: 실제 API 호출)
-VITE_USE_MOCK=true
 ```
 
 ### 개발 모드 실행
@@ -46,32 +43,6 @@ npm run dev
 
 ```bash
 npm run build
-```
-
-## Mock 모드
-
-백엔드 API 서버 없이도 프론트엔드를 테스트할 수 있는 Mock 모드를 지원합니다.
-
-### Mock 모드 활성화
-
-`.env` 파일에서 `VITE_USE_MOCK=true`로 설정하면 Mock 모드가 활성화됩니다.
-
-```env
-VITE_USE_MOCK=true
-```
-
-Mock 모드에서는:
-- 실제 API 호출 대신 로컬 Mock 데이터를 사용합니다
-- API 호출 지연을 시뮬레이션하여 실제와 유사한 UX를 제공합니다
-- 콘솔에 `[Mock Mode]` 메시지가 출력됩니다
-
-### Mock 모드 비활성화
-
-실제 백엔드 API를 사용하려면:
-
-```env
-VITE_USE_MOCK=false
-VITE_API_BASE_URL=http://localhost:8000
 ```
 
 ## Vercel 배포
@@ -94,22 +65,11 @@ npm install -g vercel
 vercel
 ```
 
-### Vercel 환경 변수 설정
-
-Vercel 대시보드에서 환경 변수를 설정할 수 있습니다:
-
-1. Vercel 프로젝트 설정으로 이동
-2. Environment Variables 섹션 선택
-3. 다음 변수들을 추가:
-   - `VITE_USE_MOCK`: `true` (Mock 모드 사용) 또는 `false` (실제 API 사용)
-   - `VITE_API_BASE_URL`: 실제 API 서버 주소 (Mock 모드가 false일 때)
-
 ### 프로덕션 환경에서 실제 API 사용
 
 프로덕션 환경에서 실제 백엔드 API를 사용하려면:
 
 1. Vercel 대시보드에서 환경 변수 설정:
-   - `VITE_USE_MOCK`: `false`
    - `VITE_API_BASE_URL`: `https://your-api-domain.com`
 
 2. 재배포 트리거
